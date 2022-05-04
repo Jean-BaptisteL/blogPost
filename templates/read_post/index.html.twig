@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReadPostController!{% endblock %}
+
+{% block body %}
+    <div class="col-6 d-flex justify-content-center">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Update/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for post in listPost %}
+                <tr>
+                    <td>{{post.id}}</td>
+                    <td>{{post.title}}</td>
+                    <td><a href="/update/{{post.id}}" class="btn btn-warning">Update</a><button class="btn btn-danger">Delete</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

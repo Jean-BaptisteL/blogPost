@@ -32,7 +32,6 @@ class AddPostController extends AbstractController
 
         return $this->render('add_post/index.html.twig', [
             'form' => $form->createView(),
-            'post' => $post
         ]);
     }
 }
