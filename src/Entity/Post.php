@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PostRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -19,16 +20,19 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $content;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private $date;
 
