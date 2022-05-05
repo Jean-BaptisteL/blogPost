@@ -36,7 +36,7 @@ class UpdatePostController extends AbstractController
         }
 
         return $this->render('update_post/index.html.twig', [
-            'controller_name' => 'UpdatePostController',
+            'post' => $post,
             'form' => $form->createView()
         ]);
     }
