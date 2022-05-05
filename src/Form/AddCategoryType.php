@@ -14,6 +14,7 @@ class AddCategoryType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('slug')
             ->add('Enregistrer', SubmitType::class)
         ;
     }

@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -24,7 +23,6 @@ class Category
     private $name;
 
     /**
-     * @Gedmo\Slug(fields={"titre"})
      * @ORM\Column(type="string", length=255)
      */
     private $slug;

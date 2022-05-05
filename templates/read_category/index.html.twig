@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ReadCategoryController!{% endblock %}
+
+{% block body %}
+    
+    <div class="col-6 d-flex justify-content-center">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in listCategory %}
+            <tr>
+                <td>{{category.id}}</td>
+                <td>{{category.name}}</td>
+                <td>
+                    <a href="{{ path('app_update_category', {'id': category.id}) }}" class="btn btn-warning">Update</a>
+                </td>
+            </tr>             
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+    
+{% endblock %}
