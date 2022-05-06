@@ -3,10 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Post;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
+use App\Entity\User;
+use App\Entity\Category;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Post>
@@ -47,22 +49,66 @@ class PostRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return Post[] Returns an array of Post objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Post[] Returns an array of Post objects
+     */
+    public function findPostByUser(User $user)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('p.user = :val')
+            ->setParameter('val', $user)
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    /**
+     * @return Post[] Returns an array of Post objects
+     */
+    public function findPostByCategory(Category $category)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.categoryId = :category')
+            ->setParameter('category', $category)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Post[] Returns an array of Post objects
+     */
+    public function findVisiblePosts()
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.visibility = true')
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+        /**
+     * @return Post[] Returns an array of Post objects
+     */
+    public function findAuthorPosts(int $id)
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.user', 'u')
+            ->andWhere('u.id = :id')
+            ->setParameter('id', $id)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
 
     /*
     public function findOneBySomeField($value): ?Post

@@ -18,16 +18,20 @@
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
-                    <th>Update/Delete</th>
+                    {{ user is defined ? "<th>Update/Delete</th>" : "<th>Auteur</th>" }}
                 </tr>
             </thead>
             <tbody>
             {% for post in listPost %}
                 <tr>
                     <td>{{post.id}}</td>
-                    <td>{{post.title}}</td>
+                    <td><a href="{{ path('app_view_post', {'id':post.id}) }}">{{post.title}}</a></td>
                     <td>
-                        <a href="/update/{{post.id}}" class="btn btn-warning">Update</a>
+                        {% if user is defined %}
+                            <a href="{{ path('app_update_post' , {'id': post.id}) }}" class="btn btn-warning">Update</a>
+                        {% else %}
+                            {{post.user.firstname  ~ ' ' ~ post.user.lastname }}
+                        {% endif %}
                     </td>
                 </tr>             
             {% endfor %}

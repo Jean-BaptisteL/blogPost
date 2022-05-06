@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AddCategoryController extends AbstractController
 {
     /**
-     * @Route("/add-category", name="app_add_category")
+     * @Route("/admin/add-category", name="app_add_category")
      */
     public function index(CategoryRepository $categoryRepository, Request $request, ManagerRegistry $doctrine): Response
     {

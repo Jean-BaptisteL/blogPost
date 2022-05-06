@@ -10,16 +10,19 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+/**
+* @Route("/admin")
+*/
 class AddPostController extends AbstractController
 {
     /**
-     * @Route("/", name="app_add_post")
+     * @Route("/addPost", name="app_add_post")
      */
     public function index(PostRepository $postRepository, Request $request, ManagerRegistry $doctrine): Response
     {
 
         $post = new Post;
+        $post->setUser($this->getUser());
         $form = $this->createForm(AddFormType::class, $post);
         $form->handleRequest($request);
 

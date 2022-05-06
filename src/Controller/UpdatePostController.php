@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class UpdatePostController extends AbstractController
 {
     /**
-     * @Route("/update/{id}", name="app_update_post")
+     * @Route("/admin/update/{id}", name="app_update_post")
      */
     public function index(int $id, ManagerRegistry $doctrine, Request $request): Response
     {

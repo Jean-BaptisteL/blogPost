@@ -40,7 +40,7 @@ class UpdateCategoryController extends AbstractController
     }
 
       /**
-     * @Route("/delete-category/{id}", name="app_delete_category")
+     * @Route("/admin/delete-category/{id}", name="app_delete_category")
      */
     public function delete(Request $request, Category $category, ManagerRegistry $doctrine): Response
     {
